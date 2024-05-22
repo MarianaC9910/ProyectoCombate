@@ -10,5 +10,11 @@ void Enemigo::atacar(){
 }
 
 void Enemigo::mover(){
-    
+    if(this->posy!=jugador.posy){
+        if(this->posy<jugador.posx){
+            this->posy++;
+        }else if(this->posy>jugador.posx){
+            this->posy--;
+        }
+    }
 }
