@@ -13,7 +13,7 @@ Jugador::Jugador(string nom, int vid, int dan){
     this->vida=vid;
     this->danio=dan;
 }
-Jugador::void mover(){
+void Jugador::mover(){
     switch(_getch()) 
     {
         case 'w':
@@ -32,9 +32,9 @@ Jugador::void mover(){
             jugador.atacar();  
     }
 }
-Jugador::void aparecer(){
+void Jugador::aparecer(){
 
 }
-Jugador::void atacar(){
+void Jugador::atacar(){
 
 }
