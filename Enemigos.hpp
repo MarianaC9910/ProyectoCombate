@@ -1,5 +1,9 @@
-#ifndef Enemigos.hpp
-#define Enemigos.hpp
+#ifndef Enemigos_hpp
+#define Enemigos_hpp
+#include <iostream>
+#include <string>
+
+using namespace std;
 
 class Enemigo{
     int vida;

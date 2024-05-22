@@ -1,5 +1,9 @@
-#ifndef Jugador.hpp
-#define Jugador.hpp
+#ifndef Jugador_hpp
+#define Jugador_hpp
+#include <iostream>
+#include <string>
+
+using namespace std;
 class Jugador{
     string nombre;
     int vida;
