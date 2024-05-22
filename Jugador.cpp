@@ -14,7 +14,23 @@ Jugador::Jugador(string nom, int vid, int dan){
     this->danio=dan;
 }
 Jugador::void mover(){
-
+    switch(_getch()) 
+    {
+        case 'w':
+            this->posy--;
+            break;
+        case 'a':
+            this->posx--;
+            break;
+        case 'd':
+            this->posx++;
+            break;
+        case 's':
+            this->posy++;
+            break;
+        case 'e':
+            jugador.atacar();  
+    }
 }
 Jugador::void aparecer(){
 
