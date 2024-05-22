@@ -8,10 +8,11 @@ int main()
     RenderWindow window(VideoMode(400, 400), "SFML works!");
     Texture fondoprueba;
 
-     if(!fondoprueba.loadFromFile("teturas/fondoprueba.jpg"))
+     if(!fondoprueba.loadFromFile("texturas/fondoprueba.jpg"))
     {
         cout << "Error al cargar imagen" << endl;
     }
+    fondoprueba.setRepeated(true);
 
     Sprite fondo;
     fondo.setTexture(fondoprueba);
@@ -26,8 +27,8 @@ int main()
                 window.close();
         }
 
-        window.clear(Color(51,51,51));
-        window.draw(fondoprueba);
+        window.clear();
+        window.draw(fondo);
         window.display();
     }
 
