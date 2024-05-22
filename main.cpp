@@ -1,10 +1,21 @@
+#include <iostream>
 #include <SFML/Graphics.hpp>
 using namespace sf;
+using namespace std;
+
 int main()
 {
-    RenderWindow window(VideoMode(200, 200), "SFML works!");
-    CircleShape shape(100.f);
-    shape.setFillColor(Color::Green);
+    RenderWindow window(VideoMode(400, 400), "SFML works!");
+    Texture fondoprueba;
+
+     if(!fondoprueba.loadFromFile("teturas/fondoprueba.jpg"))
+    {
+        cout << "Error al cargar imagen" << endl;
+    }
+
+    Sprite fondo;
+    fondo.setTexture(fondoprueba);
+    fondo.setTextureRect(IntRect(0,0,400,400));
 
     while (window.isOpen())
     {
@@ -15,8 +26,8 @@ int main()
                 window.close();
         }
 
-        window.clear();
-        window.draw(shape);
+        window.clear(Color(51,51,51));
+        window.draw(fondoprueba);
         window.display();
     }
 
