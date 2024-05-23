@@ -1,14 +1,30 @@
 #include "Jugador.hpp"
-Jugador::Jugador(){
-}
-Jugador::Jugador(string nom){
+#include <conio.h>
+ 
+
+Jugador::Jugador(Texture t){
+
+    this->tex=t;
+
+    if(!tex.loadFromFile("texturas/criculov.jpg"))
+    {
+        cout << "Error al cargar imagen" << endl;
+    }
+    tex.setRepeated(true);
+
+    Sprite jugador; 
+
+    jugador.setTexture(tex);
+};
+
+Jugador::Jugador(string nom, Texture t){
     this->nombre=nom;
 }
-Jugador::Jugador(string nom, int vid){
+Jugador::Jugador(string nom,Texture t,  int vid){
     this->nombre=nom;
     this->vida=vid;
 }
-Jugador::Jugador(string nom, int vid, int dan){
+Jugador::Jugador(string nom, Texture t, int vid, int dan){
     this->nombre=nom;
     this->vida=vid;
     this->danio=dan;
