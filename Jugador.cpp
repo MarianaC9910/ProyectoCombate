@@ -1,5 +1,6 @@
 #include "Jugador.hpp"
 #include <conio.h>
+#include <rlutil.h>
 
 Jugador::Jugador()
 {
