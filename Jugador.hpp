@@ -7,20 +7,26 @@
 using namespace std;
 using namespace sf;
 class Jugador{
-    public: 
+    private:
     string nombre;
     int vida;
     int danio;
     int posx,posy;
-    Texture tex; 
+    Sprite persona;
+    static Texture tex; 
 
-    Jugador(Texture t);
-    Jugador(string nom, Texture t);
-    Jugador(string nom, Texture t, int vid);
-    Jugador(string nom, Texture t, int vid, int dan);
+    public: 
+    Jugador();
+    Jugador(string nom);
+    Jugador(string nom, int vid);
+    Jugador(string nom,int vid, int dan);
+
+    static void cargarTextura(const string& archivo);
+    void draw(RenderWindow& window);
     void mover();
-    void aparecer();
+    void aparecer(int x, int y);
     void atacar();
+
 };
 
 #endif

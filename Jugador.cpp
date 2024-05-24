@@ -1,34 +1,32 @@
 #include "Jugador.hpp"
 #include <conio.h>
- 
 
-Jugador::Jugador(Texture t){
+Texture Jugador::tex; //se inicia la textura para el jugador, q siempre es la misma
 
-    this->tex=t;
-
-    if(!tex.loadFromFile("texturas/criculov.jpg"))
-    {
-        cout << "Error al cargar imagen" << endl;
-    }
-    tex.setRepeated(true);
-
-    Sprite jugador; 
-
-    jugador.setTexture(tex);
+Jugador::Jugador(){
+    persona.setTexture(tex);
 };
 
-Jugador::Jugador(string nom, Texture t){
+Jugador::Jugador(string nom){
     this->nombre=nom;
+    persona.setTexture(tex);
 }
-Jugador::Jugador(string nom,Texture t,  int vid){
+Jugador::Jugador(string nom, int vid){
     this->nombre=nom;
     this->vida=vid;
+    persona.setTexture(tex);
 }
-Jugador::Jugador(string nom, Texture t, int vid, int dan){
+Jugador::Jugador(string nom, int vid, int dan){
     this->nombre=nom;
     this->vida=vid;
     this->danio=dan;
+    persona.setTexture(tex);
 }
+
+void Jugador::draw(RenderWindow& window) {
+    window.draw(persona);
+}
+
 void Jugador:: mover(){
     switch(_getch()) 
     {
@@ -45,11 +43,20 @@ void Jugador:: mover(){
             this->posy++;
             break;
         case 'e':
-            jugador.atacar();  
+            atacar();  
+    }
+    persona.setPosition(posx, posy); 
+}
+
+
+void Jugador::cargarTextura(const string& archivo) { //se carga la textura por default
+    if (!tex.loadFromFile(archivo)) {
+        cout << "Error al cargar la textura por defecto" << endl;
     }
 }
-void Jugador:: aparecer(){
 
+void Jugador:: aparecer(int x, int y){
+    persona.setPosition(x, y);
 }
 void Jugador:: atacar(){
 
