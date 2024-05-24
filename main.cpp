@@ -8,10 +8,10 @@ int main()
 {
     RenderWindow window(VideoMode(400, 400), "SFML works!");
     Texture fondoprueba;
-    Jugador::cargarTextura("texturas/criculov.jpg"); //se carga la textura por defecto del jugador desde el inicio, como es una funcion estatica no ocupa de instancia de jugador
+    Jugador::cargarTexturas();
 
 
-     if(!fondoprueba.loadFromFile("texturas/fondoprueba.jpg"))
+    if(!fondoprueba.loadFromFile("texturas/fondoprueba.jpg"))
     {
         cout << "Error al cargar imagen" << endl;
     }
@@ -24,6 +24,7 @@ int main()
 
   
     Jugador jugador("Player1", 100, 10);
+    jugador.persona.setTexture(Jugador::textura_derecha);
    
     jugador.aparecer(window.getSize().x / 2, window.getSize().y / 2);
 
@@ -35,6 +36,9 @@ int main()
             if (event.type == Event::Closed)
                 window.close();
         }
+
+        jugador.mover();
+        jugador.apuntar(window);
 
         window.clear();
         window.draw(fondo);
