@@ -4,47 +4,47 @@
 
 Jugador::Jugador()
 {
-    if (!tex.loadFromFile("texturas/tex.jpg"))
+    if (!tex.loadFromFile("texturas/tex.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
 
-     if (!textura_derecha.loadFromFile("texturas/der.jpg"))
+     if (!textura_derecha.loadFromFile("texturas/der.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
     
-     if (!textura_izquierda.loadFromFile("texturas/izq.jpg"))
+     if (!textura_izquierda.loadFromFile("texturas/izq.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
     
-     if (!textura_arriba.loadFromFile("texturas/frente.jpg"))
+     if (!textura_arriba.loadFromFile("texturas/frente.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
     
-     if (!textura_arriba_d.loadFromFile("texturas/diagonal_ad.jpg"))
+     if (!textura_arriba_d.loadFromFile("texturas/diagonal_ad.png"))
      {
          cout << "Error al cargar la textura" << endl;;
      }
     
-     if (!textura_arriba_i.loadFromFile("texturas/diagonal_ai.jpg"))
+     if (!textura_arriba_i.loadFromFile("texturas/diagonal_ai.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
     
-     if (!textura_abajo.loadFromFile("texturas/atras.jpg"))
+     if (!textura_abajo.loadFromFile("texturas/atras.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
     
-     if (!textura_abajo_d.loadFromFile("texturas/diagonal_atd.jpg"))
+     if (!textura_abajo_d.loadFromFile("texturas/diagonal_atd.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
     
-     if (!textura_abajo_i.loadFromFile("texturas/diagonal_ati.jpg"))
+     if (!textura_abajo_i.loadFromFile("texturas/diagonal_ati.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
@@ -53,47 +53,47 @@ Jugador::Jugador()
 
 Jugador::Jugador(string nom)
 {
-    if (!tex.loadFromFile("texturas/tex.jpg"))
+    if (!tex.loadFromFile("texturas/tex.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
 
-     if (!textura_derecha.loadFromFile("texturas/der.jpg"))
+     if (!textura_derecha.loadFromFile("texturas/der.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
     
-     if (!textura_izquierda.loadFromFile("texturas/izq.jpg"))
+     if (!textura_izquierda.loadFromFile("texturas/izq.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
     
-     if (!textura_arriba.loadFromFile("texturas/frente.jpg"))
+     if (!textura_arriba.loadFromFile("texturas/frente.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
     
-     if (!textura_arriba_d.loadFromFile("texturas/diagonal_ad.jpg"))
+     if (!textura_arriba_d.loadFromFile("texturas/diagonal_ad.png"))
      {
          cout << "Error al cargar la textura" << endl;;
      }
     
-     if (!textura_arriba_i.loadFromFile("texturas/diagonal_ai.jpg"))
+     if (!textura_arriba_i.loadFromFile("texturas/diagonal_ai.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
     
-     if (!textura_abajo.loadFromFile("texturas/atras.jpg"))
+     if (!textura_abajo.loadFromFile("texturas/atras.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
     
-     if (!textura_abajo_d.loadFromFile("texturas/diagonal_atd.jpg"))
+     if (!textura_abajo_d.loadFromFile("texturas/diagonal_atd.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
     
-     if (!textura_abajo_i.loadFromFile("texturas/diagonal_ati.jpg"))
+     if (!textura_abajo_i.loadFromFile("texturas/diagonal_ati.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
@@ -102,47 +102,47 @@ Jugador::Jugador(string nom)
 }
 Jugador::Jugador(string nom, int vid)
 {
-    if (!tex.loadFromFile("texturas/tex.jpg"))
+    if (!tex.loadFromFile("texturas/tex.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
 
-     if (!textura_derecha.loadFromFile("texturas/der.jpg"))
+     if (!textura_derecha.loadFromFile("texturas/der.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
     
-     if (!textura_izquierda.loadFromFile("texturas/izq.jpg"))
+     if (!textura_izquierda.loadFromFile("texturas/izq.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
     
-     if (!textura_arriba.loadFromFile("texturas/frente.jpg"))
+     if (!textura_arriba.loadFromFile("texturas/frente.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
     
-     if (!textura_arriba_d.loadFromFile("texturas/diagonal_ad.jpg"))
+     if (!textura_arriba_d.loadFromFile("texturas/diagonal_ad.png"))
      {
          cout << "Error al cargar la textura" << endl;;
      }
     
-     if (!textura_arriba_i.loadFromFile("texturas/diagonal_ai.jpg"))
+     if (!textura_arriba_i.loadFromFile("texturas/diagonal_ai.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
     
-     if (!textura_abajo.loadFromFile("texturas/atras.jpg"))
+     if (!textura_abajo.loadFromFile("texturas/atras.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
     
-     if (!textura_abajo_d.loadFromFile("texturas/diagonal_atd.jpg"))
+     if (!textura_abajo_d.loadFromFile("texturas/diagonal_atd.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
     
-     if (!textura_abajo_i.loadFromFile("texturas/diagonal_ati.jpg"))
+     if (!textura_abajo_i.loadFromFile("texturas/diagonal_ati.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
@@ -152,51 +152,51 @@ Jugador::Jugador(string nom, int vid)
 }
 Jugador::Jugador(string nom, int vid, int dan)
 {
-    if (!tex.loadFromFile("texturas/tex.jpg"))
+    if (!tex.loadFromFile("texturas/tex.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
 
-     if (!textura_derecha.loadFromFile("texturas/der.jpg"))
+     if (!textura_derecha.loadFromFile("texturas/der.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
     
-     if (!textura_izquierda.loadFromFile("texturas/izq.jpg"))
+     if (!textura_izquierda.loadFromFile("texturas/izq.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
     
-     if (!textura_arriba.loadFromFile("texturas/frente.jpg"))
+     if (!textura_arriba.loadFromFile("texturas/frente.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
     
-     if (!textura_arriba_d.loadFromFile("texturas/diagonal_ad.jpg"))
+     if (!textura_arriba_d.loadFromFile("texturas/diagonal_ad.png"))
      {
          cout << "Error al cargar la textura" << endl;;
      }
     
-     if (!textura_arriba_i.loadFromFile("texturas/diagonal_ai.jpg"))
+     if (!textura_arriba_i.loadFromFile("texturas/diagonal_ai.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
     
-     if (!textura_abajo.loadFromFile("texturas/atras.jpg"))
+     if (!textura_abajo.loadFromFile("texturas/atras.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
     
-     if (!textura_abajo_d.loadFromFile("texturas/diagonal_atd.jpg"))
+     if (!textura_abajo_d.loadFromFile("texturas/diagonal_atd.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
     
-     if (!textura_abajo_i.loadFromFile("texturas/diagonal_ati.jpg"))
+     if (!textura_abajo_i.loadFromFile("texturas/diagonal_ati.png"))
      {
          cout << "Error al cargar la textura" << endl;
      }
-     
+
     this->nombre = nom;
     this->vida = vid;
     this->danio = dan;
@@ -245,47 +245,47 @@ void Jugador::mover()
 
 void Jugador::cargarTexturas()
 {
-    // if (!tex.loadFromFile("texturas/tex.jpg"))
+    // if (!tex.loadFromFile("texturas/tex.png"))
     // {
     //     cout << "Error al cargar la textura" << endl;
     // }
 
-    // if (!textura_derecha.loadFromFile("texturas/der.jpg"))
+    // if (!textura_derecha.loadFromFile("texturas/der.png"))
     // {
     //     cout << "Error al cargar la textura" << endl;
     // }
     
-    // if (!textura_izquierda.loadFromFile("texturas/izq.jpg"))
+    // if (!textura_izquierda.loadFromFile("texturas/izq.png"))
     // {
     //     cout << "Error al cargar la textura" << endl;
     // }
     
-    // if (!textura_arriba.loadFromFile("texturas/frente.jpg"))
+    // if (!textura_arriba.loadFromFile("texturas/frente.png"))
     // {
     //     cout << "Error al cargar la textura" << endl;
     // }
     
-    // if (!textura_arriba_d.loadFromFile("texturas/diagonal_ad.jpg"))
+    // if (!textura_arriba_d.loadFromFile("texturas/diagonal_ad.png"))
     // {
     //     cout << "Error al cargar la textura" << endl;;
     // }
     
-    // if (!textura_arriba_i.loadFromFile("texturas/diagonal_ai.jpg"))
+    // if (!textura_arriba_i.loadFromFile("texturas/diagonal_ai.png"))
     // {
     //     cout << "Error al cargar la textura" << endl;
     // }
     
-    // if (!textura_abajo.loadFromFile("texturas/atras.jpg"))
+    // if (!textura_abajo.loadFromFile("texturas/atras.png"))
     // {
     //     cout << "Error al cargar la textura" << endl;
     // }
     
-    // if (!textura_abajo_d.loadFromFile("texturas/diagonal_atd.jpg"))
+    // if (!textura_abajo_d.loadFromFile("texturas/diagonal_atd.png"))
     // {
     //     cout << "Error al cargar la textura" << endl;
     // }
     
-    // if (!textura_abajo_i.loadFromFile("texturas/diagonal_ati.jpg"))
+    // if (!textura_abajo_i.loadFromFile("texturas/diagonal_ati.png"))
     // {
     //     cout << "Error al cargar la textura" << endl;
     // }

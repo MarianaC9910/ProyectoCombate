@@ -25,7 +25,7 @@ int main()
 
   
     Jugador jugador("Player1", 100, 10);
-    jugador.persona.setTexture(jugador.tex);
+    //jugador.persona.setTexture(jugador.tex);
 
     jugador.setSize(100,100);
     jugador.aparecer(window.getSize().x / 2, window.getSize().y / 2);
