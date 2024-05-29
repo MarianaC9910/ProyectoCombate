@@ -66,53 +66,51 @@ void Jugador::mover()
     persona.setPosition(posx, posy);
 }
 
-//no he hecho las texturas, pero creo q sirve - Mel
-
 void Jugador::cargarTexturas()
 {
-    if (!tex.loadFromFile("texturas/circulov.jpg"))
+    if (!tex.loadFromFile("texturas/tex.jpg"))
     {
-        cout << "Error al cargar la textura por defecto" << endl;
+        cout << "Error al cargar la textura" << endl;
     }
 
     if (!textura_derecha.loadFromFile("texturas/der.jpg"))
     {
-        cout << "Error al cargar la textura por defecto" << endl;
+        cout << "Error al cargar la textura" << endl;
     }
     
     if (!textura_izquierda.loadFromFile("texturas/izq.jpg"))
     {
-        cout << "Error al cargar la textura por defecto" << endl;
+        cout << "Error al cargar la textura" << endl;
     }
     
-    if (!textura_arriba.loadFromFile("texturas/arr.jpg"))
+    if (!textura_arriba.loadFromFile("texturas/frente.jpg"))
     {
-        cout << "Error al cargar la textura por defecto" << endl;
+        cout << "Error al cargar la textura" << endl;
     }
     
-    if (!textura_arriba_d.loadFromFile("texturas/arrd.jpg"))
+    if (!textura_arriba_d.loadFromFile("texturas/diagonal_ad.jpg"))
     {
-        cout << "Error al cargar la textura por defecto" << endl;
+        cout << "Error al cargar la textura" << endl;;
     }
     
-    if (!textura_arriba_i.loadFromFile("texturas/arri.jpg"))
+    if (!textura_arriba_i.loadFromFile("texturas/diagonal_ai.jpg"))
     {
-        cout << "Error al cargar la textura por defecto" << endl;
+        cout << "Error al cargar la textura" << endl;
     }
     
-    if (!textura_abajo.loadFromFile("texturas/ab.jpg"))
+    if (!textura_abajo.loadFromFile("texturas/atras.jpg"))
     {
-        cout << "Error al cargar la textura por defecto" << endl;
+        cout << "Error al cargar la textura" << endl;
     }
     
-    if (!textura_abajo_d.loadFromFile("texturas/abd.jpg"))
+    if (!textura_abajo_d.loadFromFile("texturas/diagonal_atd.jpg"))
     {
-        cout << "Error al cargar la textura por defecto" << endl;
+        cout << "Error al cargar la textura" << endl;
     }
     
-    if (!textura_abajo_i.loadFromFile("texturas/abi.jpg"))
+    if (!textura_abajo_i.loadFromFile("texturas/diagonal_ati.jpg"))
     {
-        cout << "Error al cargar la textura por defecto" << endl;
+        cout << "Error al cargar la textura" << endl;
     }
 }
 
@@ -170,3 +168,7 @@ void Jugador::apuntar(RenderWindow &window)
     else if (angle == -45.0f)
         persona.setTexture(textura_abajo_d);
 }
+
+void Jugador::setSize(float width, float height){
+    persona.setScale(width/persona.getLocalBounds().width, height/persona.getLocalBounds().height);
+};

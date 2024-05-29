@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-    RenderWindow window(VideoMode(400, 400), "SFML works!");
+    RenderWindow window(VideoMode(200, 200), "SFML works!");
     Texture fondoprueba;
     Jugador::cargarTexturas();
 
@@ -21,12 +21,13 @@ int main()
 
     Sprite fondo;
     fondo.setTexture(fondoprueba);
-    fondo.setTextureRect(IntRect(0,0,400,400));
+    fondo.setTextureRect(IntRect(0,0,200,200));
 
   
     Jugador jugador("Player1", 100, 10);
     jugador.persona.setTexture(Jugador::tex);
-   
+
+    jugador.setSize(100,100);
     jugador.aparecer(window.getSize().x / 2, window.getSize().y / 2);
 
     while (window.isOpen())

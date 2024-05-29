@@ -41,6 +41,7 @@ class Jugador{
     void aparecer(int x, int y);
     void atacar();
     void apuntar(RenderWindow& window);
+    void setSize(float width, float height);
 
 };
 
