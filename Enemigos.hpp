@@ -12,7 +12,7 @@ private:
     int danio;
     int posx,posy;
 public: 
-     Texture mounstruo; 
+    Texture mounstruo; 
 
     Sprite enemigo;
 

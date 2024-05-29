@@ -208,35 +208,35 @@ void Jugador::draw(RenderWindow &window)
     window.draw(persona);
 }
 
-void Jugador::mover()
+void Jugador::mover(RenderWindow &window, Keyboard::Key key)
 {
 
     // la diferencia entre Vector2u y 2f es que el 2f usa valores float que pueden ser negativos y el 2u solo usa enteros sin signos negativos
 
-    Vector2u ventanaSize = RenderWindow().getSize(); // obtenemos las medidas de la ventana que se va a mostrar
+    Vector2u ventanaSize = window.getSize(); // obtenemos las medidas de la ventana que se va a mostrar
 
     int windowWidth = ventanaSize.x;  // obtenemos el ancho de la ventana
     int windowHeight = ventanaSize.y; // obtenemos el alto de la ventana
 
-    switch (_getch())
+    switch (key)
     {
-    case 'w':
+    case Keyboard::W:
         if (posy > 0)
             posy--;
         break;
-    case 'a':
+    case Keyboard::A:
         if (posx > 0)
             posx--;
         break;
-    case 'd':
+    case Keyboard::D:
         if (posx < windowWidth - persona.getGlobalBounds().width)
             posx++;
         break;
-    case 's':
+    case Keyboard::S:
         if (posy < windowHeight - persona.getGlobalBounds().height)
             posy++;
         break;
-    case 'e':
+    case Keyboard::E:
         atacar();
     }
 

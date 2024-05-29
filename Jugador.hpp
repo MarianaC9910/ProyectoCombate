@@ -37,7 +37,7 @@ class Jugador{
 
      void cargarTexturas();
     void draw(RenderWindow& window);
-    void mover();
+    void mover(RenderWindow& window, Keyboard::Key key);
     void aparecer(int x, int y);
     void atacar();
     void apuntar(RenderWindow& window);
