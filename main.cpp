@@ -12,7 +12,7 @@ int main()
     //Jugador::cargarTexturas();
 
 
-    if(!fondoprueba.loadFromFile("texturas/fondoprueba.jpg"))
+    if(!fondoprueba.loadFromFile("texturas/bc.png"))
     {
         cout << "Error al cargar imagen" << endl;
     }
