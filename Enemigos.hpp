@@ -12,7 +12,7 @@ private:
     int danio;
     int posx,posy;
 public: 
-    static Texture mounstruo; 
+     Texture mounstruo; 
 
     Sprite enemigo;
 
@@ -20,7 +20,7 @@ public:
     Enemigo(int vid);
     Enemigo(int vid, int dan);
 
-    static void cargarTexturas();
+     void cargarTexturas();
     void draw(RenderWindow& window);
     void mover();//revisa coordenadas del jugador y se mueve hacia ellas 
     void aparecer(int x, int y);

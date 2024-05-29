@@ -1,25 +1,202 @@
 #include "Jugador.hpp"
 #include <conio.h>
-#include "rlutil.h"
+// #include "rlutil.h"
 
 Jugador::Jugador()
 {
+    if (!tex.loadFromFile("texturas/tex.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+
+     if (!textura_derecha.loadFromFile("texturas/der.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+    
+     if (!textura_izquierda.loadFromFile("texturas/izq.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+    
+     if (!textura_arriba.loadFromFile("texturas/frente.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+    
+     if (!textura_arriba_d.loadFromFile("texturas/diagonal_ad.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;;
+     }
+    
+     if (!textura_arriba_i.loadFromFile("texturas/diagonal_ai.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+    
+     if (!textura_abajo.loadFromFile("texturas/atras.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+    
+     if (!textura_abajo_d.loadFromFile("texturas/diagonal_atd.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+    
+     if (!textura_abajo_i.loadFromFile("texturas/diagonal_ati.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
     persona.setTexture(tex);
 };
 
 Jugador::Jugador(string nom)
 {
+    if (!tex.loadFromFile("texturas/tex.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+
+     if (!textura_derecha.loadFromFile("texturas/der.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+    
+     if (!textura_izquierda.loadFromFile("texturas/izq.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+    
+     if (!textura_arriba.loadFromFile("texturas/frente.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+    
+     if (!textura_arriba_d.loadFromFile("texturas/diagonal_ad.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;;
+     }
+    
+     if (!textura_arriba_i.loadFromFile("texturas/diagonal_ai.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+    
+     if (!textura_abajo.loadFromFile("texturas/atras.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+    
+     if (!textura_abajo_d.loadFromFile("texturas/diagonal_atd.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+    
+     if (!textura_abajo_i.loadFromFile("texturas/diagonal_ati.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
     this->nombre = nom;
     persona.setTexture(tex);
 }
 Jugador::Jugador(string nom, int vid)
 {
+    if (!tex.loadFromFile("texturas/tex.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+
+     if (!textura_derecha.loadFromFile("texturas/der.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+    
+     if (!textura_izquierda.loadFromFile("texturas/izq.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+    
+     if (!textura_arriba.loadFromFile("texturas/frente.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+    
+     if (!textura_arriba_d.loadFromFile("texturas/diagonal_ad.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;;
+     }
+    
+     if (!textura_arriba_i.loadFromFile("texturas/diagonal_ai.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+    
+     if (!textura_abajo.loadFromFile("texturas/atras.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+    
+     if (!textura_abajo_d.loadFromFile("texturas/diagonal_atd.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+    
+     if (!textura_abajo_i.loadFromFile("texturas/diagonal_ati.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
     this->nombre = nom;
     this->vida = vid;
     persona.setTexture(tex);
 }
 Jugador::Jugador(string nom, int vid, int dan)
 {
+    if (!tex.loadFromFile("texturas/tex.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+
+     if (!textura_derecha.loadFromFile("texturas/der.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+    
+     if (!textura_izquierda.loadFromFile("texturas/izq.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+    
+     if (!textura_arriba.loadFromFile("texturas/frente.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+    
+     if (!textura_arriba_d.loadFromFile("texturas/diagonal_ad.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;;
+     }
+    
+     if (!textura_arriba_i.loadFromFile("texturas/diagonal_ai.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+    
+     if (!textura_abajo.loadFromFile("texturas/atras.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+    
+     if (!textura_abajo_d.loadFromFile("texturas/diagonal_atd.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+    
+     if (!textura_abajo_i.loadFromFile("texturas/diagonal_ati.jpg"))
+     {
+         cout << "Error al cargar la textura" << endl;
+     }
+     
     this->nombre = nom;
     this->vida = vid;
     this->danio = dan;
@@ -68,50 +245,50 @@ void Jugador::mover()
 
 void Jugador::cargarTexturas()
 {
-    if (!tex.loadFromFile("texturas/tex.jpg"))
-    {
-        cout << "Error al cargar la textura" << endl;
-    }
+    // if (!tex.loadFromFile("texturas/tex.jpg"))
+    // {
+    //     cout << "Error al cargar la textura" << endl;
+    // }
 
-    if (!textura_derecha.loadFromFile("texturas/der.jpg"))
-    {
-        cout << "Error al cargar la textura" << endl;
-    }
+    // if (!textura_derecha.loadFromFile("texturas/der.jpg"))
+    // {
+    //     cout << "Error al cargar la textura" << endl;
+    // }
     
-    if (!textura_izquierda.loadFromFile("texturas/izq.jpg"))
-    {
-        cout << "Error al cargar la textura" << endl;
-    }
+    // if (!textura_izquierda.loadFromFile("texturas/izq.jpg"))
+    // {
+    //     cout << "Error al cargar la textura" << endl;
+    // }
     
-    if (!textura_arriba.loadFromFile("texturas/frente.jpg"))
-    {
-        cout << "Error al cargar la textura" << endl;
-    }
+    // if (!textura_arriba.loadFromFile("texturas/frente.jpg"))
+    // {
+    //     cout << "Error al cargar la textura" << endl;
+    // }
     
-    if (!textura_arriba_d.loadFromFile("texturas/diagonal_ad.jpg"))
-    {
-        cout << "Error al cargar la textura" << endl;;
-    }
+    // if (!textura_arriba_d.loadFromFile("texturas/diagonal_ad.jpg"))
+    // {
+    //     cout << "Error al cargar la textura" << endl;;
+    // }
     
-    if (!textura_arriba_i.loadFromFile("texturas/diagonal_ai.jpg"))
-    {
-        cout << "Error al cargar la textura" << endl;
-    }
+    // if (!textura_arriba_i.loadFromFile("texturas/diagonal_ai.jpg"))
+    // {
+    //     cout << "Error al cargar la textura" << endl;
+    // }
     
-    if (!textura_abajo.loadFromFile("texturas/atras.jpg"))
-    {
-        cout << "Error al cargar la textura" << endl;
-    }
+    // if (!textura_abajo.loadFromFile("texturas/atras.jpg"))
+    // {
+    //     cout << "Error al cargar la textura" << endl;
+    // }
     
-    if (!textura_abajo_d.loadFromFile("texturas/diagonal_atd.jpg"))
-    {
-        cout << "Error al cargar la textura" << endl;
-    }
+    // if (!textura_abajo_d.loadFromFile("texturas/diagonal_atd.jpg"))
+    // {
+    //     cout << "Error al cargar la textura" << endl;
+    // }
     
-    if (!textura_abajo_i.loadFromFile("texturas/diagonal_ati.jpg"))
-    {
-        cout << "Error al cargar la textura" << endl;
-    }
+    // if (!textura_abajo_i.loadFromFile("texturas/diagonal_ati.jpg"))
+    // {
+    //     cout << "Error al cargar la textura" << endl;
+    // }
 }
 
 void Jugador::aparecer(int x, int y)

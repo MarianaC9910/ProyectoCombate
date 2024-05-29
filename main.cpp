@@ -1,6 +1,6 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "rlutil.h"
+// #include "rlutil.h"
 using namespace sf;
 using namespace std;
 #include "Jugador.hpp"
@@ -9,7 +9,7 @@ int main()
 {
     RenderWindow window(VideoMode(200, 200), "SFML works!");
     Texture fondoprueba;
-    Jugador::cargarTexturas();
+    //Jugador::cargarTexturas();
 
 
     if(!fondoprueba.loadFromFile("texturas/fondoprueba.jpg"))
@@ -25,7 +25,7 @@ int main()
 
   
     Jugador jugador("Player1", 100, 10);
-    jugador.persona.setTexture(Jugador::tex);
+    jugador.persona.setTexture(jugador.tex);
 
     jugador.setSize(100,100);
     jugador.aparecer(window.getSize().x / 2, window.getSize().y / 2);

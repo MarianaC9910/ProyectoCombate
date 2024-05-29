@@ -16,17 +16,17 @@ class Jugador{
 
     public: 
 
-    static Texture tex; 
-    static Texture textura_derecha;
-    static Texture textura_izquierda;
+    Texture tex; 
+    Texture textura_derecha;
+    Texture textura_izquierda;
 
-    static Texture textura_arriba;
-    static Texture textura_arriba_d;
-    static Texture textura_arriba_i;
+     Texture textura_arriba;
+     Texture textura_arriba_d;
+     Texture textura_arriba_i;
 
-    static Texture textura_abajo;
-    static Texture textura_abajo_d;
-    static Texture textura_abajo_i;
+     Texture textura_abajo;
+     Texture textura_abajo_d;
+     Texture textura_abajo_i;
 
     Sprite persona;
 
@@ -35,7 +35,7 @@ class Jugador{
     Jugador(string nom, int vid);
     Jugador(string nom,int vid, int dan);
 
-    static void cargarTexturas();
+     void cargarTexturas();
     void draw(RenderWindow& window);
     void mover();
     void aparecer(int x, int y);
