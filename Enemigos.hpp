@@ -1,16 +1,32 @@
 #ifndef Enemigos_hpp
 #define Enemigos_hpp
-
+#include <iostream>
+#include <SFML/Graphics.hpp>
+#include <string>
+#include <cmath>
+using namespace std;
+using namespace sf;
 class Enemigo{
+private:
     int vida;
     int danio;
-    int posx, posy;
+    int posx,posy;
+public: 
+    static Texture mounstruo; 
 
+    Sprite enemigo;
 
-    Enemigo(int hp, int dmg);
+    Enemigo();
+    Enemigo(int vid);
+    Enemigo(int vid, int dan);
 
-    void mover();
+    static void cargarTexturas();
+    void draw(RenderWindow& window);
+    void mover();//revisa coordenadas del jugador y se mueve hacia ellas 
+    void aparecer(int x, int y);
     void atacar();
+    void apuntar(RenderWindow& window);
+    void setSize(float width, float height);
 };
 
 
