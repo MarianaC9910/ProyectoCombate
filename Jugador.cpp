@@ -53,7 +53,7 @@ void Jugador::mover(RenderWindow &window, Keyboard::Key key)
 
     Vector2u ventanaSize = window.getSize(); // obtenemos las medidas de la ventana que se va a mostrar
 
-    int speed=5;
+    int speed=12;
 
     int windowWidth = ventanaSize.x;  // obtenemos el ancho de la ventana
     int windowHeight = ventanaSize.y; // obtenemos el alto de la ventana
