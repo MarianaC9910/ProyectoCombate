@@ -94,22 +94,25 @@ void Jugador::atacar()
 }
 
 void Jugador::apuntar(RenderWindow &window, const Vector2i& mousePos, Texture& texDerecha, Texture& texIzquierda, Texture& texArriba, Texture& texAbajo){
+    
+    //obtenemos la posicion del jugador
     Vector2f playerPos = persona.getPosition();
-    FloatRect bounds = persona.getGlobalBounds();
+    FloatRect bounds = persona.getGlobalBounds(); //limites del sprite del jugador
 
+    //obtenemos el centro del sprite
     float centerX = playerPos.x + bounds.width / 2;
     float centerY = playerPos.y + bounds.height / 2;
 
-    float dx = mousePos.x - centerX;
+    float dx = mousePos.x - centerX;    //diferencia entre la pos del mouse y el centro del sprite
     float dy = mousePos.y - centerY;
 
-    if (abs(dx) > abs(dy)) {
-        if (dx > 0) {
+    if (abs(dx) > abs(dy)) { //mouse esta mas desplazado en la direccion horizontal
+        if (dx > 0) { 
             persona.setTexture(texDerecha); // Derecha
         } else {
             persona.setTexture(texIzquierda); // Izquierda
         }
-    } else {
+    } else {    //mouse esta mas desplazado en la direccion vertical
         if (dy > 0) {
             persona.setTexture(texAbajo); // Abajo
         } else {
