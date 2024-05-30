@@ -37,6 +37,17 @@ int main()
     Texture atras;
     atras.loadFromFile("texturas/atras.png");
 
+    Font font; 
+    font.loadFromFile("ARCADECLASSIC.TTF"); 
+
+    //contador de kills
+    Text killcounter; 
+    killcounter.setFont(font); 
+    killcounter.setCharacterSize(10); 
+    killcounter.setFillColor(Color::White);
+    killcounter.setPosition(10,10);  
+
+
     Jugador jugador("Player1", 100, 10);
     jugador.persona.setTexture(tex);
 
@@ -87,6 +98,7 @@ int main()
         window.clear();
         window.draw(fondo);
         jugador.draw(window);
+        window.draw(killcounter); 
         window.display();
     }
 

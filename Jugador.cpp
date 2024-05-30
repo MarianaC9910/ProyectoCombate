@@ -29,7 +29,6 @@ Jugador::Jugador(string nom, int vid,float startX, float startY)
     posx = startX;
     posy = startY;
     persona.setPosition(posx, posy);
-    persona.setPosition(posx, posy);
 }
 Jugador::Jugador(string nom, int vid, int dan, float startX, float startY)
 {

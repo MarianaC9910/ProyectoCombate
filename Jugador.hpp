@@ -13,9 +13,10 @@ class Jugador{
     int vida;
     int danio;
     int posx,posy;
-    
 
     public: 
+    
+    int  killcount; 
 
     Sprite persona;
 
