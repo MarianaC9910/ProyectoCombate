@@ -16,6 +16,12 @@ int main()
     fondo.setTexture(fondoprueba);
     fondo.setTextureRect(IntRect(0, 0, 200, 200));
 
+    Texture bulletv;
+    bulletv.loadFromFile("texturas/bullet_v");
+
+    Texture bulleth;
+    bulleth.loadFromFile("texturas/bullet_h");
+
     Texture tex;
     tex.loadFromFile("texturas/tex.png");
 
