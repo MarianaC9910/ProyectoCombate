@@ -95,6 +95,32 @@ void Jugador::atacar()
 {
 }
 
+void Jugador::apuntar(RenderWindow &window, const Vector2i& mousePos, Texture& texDerecha, Texture& texIzquierda, Texture& texArriba, Texture& texAbajo){
+    Vector2f playerPos = persona.getPosition();
+    FloatRect bounds = persona.getGlobalBounds();
+
+    float centerX = playerPos.x + bounds.width / 2;
+    float centerY = playerPos.y + bounds.height / 2;
+
+    float dx = mousePos.x - centerX;
+    float dy = mousePos.y - centerY;
+
+    if (std::abs(dx) > std::abs(dy)) {
+        if (dx > 0) {
+            persona.setTexture(texDerecha); // Derecha
+        } else {
+            persona.setTexture(texIzquierda); // Izquierda
+        }
+    } else {
+        if (dy > 0) {
+            persona.setTexture(texAbajo); // Abajo
+        } else {
+            persona.setTexture(texArriba); // Arriba
+        }
+    }
+
+}
+
 // void Jugador::apuntar(RenderWindow &window)
 // {
 

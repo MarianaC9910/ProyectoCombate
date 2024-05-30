@@ -40,7 +40,7 @@ class Jugador{
     void mover(RenderWindow& window, Keyboard::Key key);
     void aparecer(int x, int y);
     void atacar();
-    void apuntar(RenderWindow& window);
+    void apuntar(RenderWindow &window, const Vector2i& mousePos, Texture& texDerecha, Texture& texIzquierda, Texture& texArriba, Texture& texAbajo);
     void setSize(float width, float height);
 
 };
