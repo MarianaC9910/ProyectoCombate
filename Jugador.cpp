@@ -1,6 +1,4 @@
 #include "Jugador.hpp"
-#include <conio.h>
-// #include "rlutil.h"
 
 Jugador::Jugador()
 {
@@ -105,7 +103,7 @@ void Jugador::apuntar(RenderWindow &window, const Vector2i& mousePos, Texture& t
     float dx = mousePos.x - centerX;
     float dy = mousePos.y - centerY;
 
-    if (std::abs(dx) > std::abs(dy)) {
+    if (abs(dx) > abs(dy)) {
         if (dx > 0) {
             persona.setTexture(texDerecha); // Derecha
         } else {
@@ -120,53 +118,6 @@ void Jugador::apuntar(RenderWindow &window, const Vector2i& mousePos, Texture& t
     }
 
 }
-
-// void Jugador::apuntar(RenderWindow &window)
-// {
-
-//     // posición del mouse en relación con la ventana
-//     Vector2i mousePos = Mouse::getPosition(window);
-
-//     // posición del jugador en relación con la ventana
-//     Vector2f jugadorPos = persona.getPosition();
-
-//     // diferencia entre la posición del mouse y la posición del jugador
-//     float dx = mousePos.x - jugadorPos.x;
-//     float dy = mousePos.y - jugadorPos.y;
-
-//     // Calcular el ángulo entre la posición del jugador y la posición del mouse
-//     float angle = std::atan2(dy, dx) * (180.0f / M_PI); // esto es como una manera de escribir pi
-
-//     // Redondear el ángulo a múltiplos de 45 grados porque solo tendremos 8 direcciones posibles en las que mire el personaje
-//     angle = round(angle / 45.0f) * 45.0f;
-
-//     // Girar el sprite del jugador según el ángulo calculado
-//     persona.setRotation(angle);
-
-//     if (angle == 0.0f)
-//         persona.setTexture(textura_derecha);
-
-//     else if (angle == 45.0f)
-//         persona.setTexture(textura_arriba_d);
-
-//     else if (angle == 90.0f)
-//         persona.setTexture(textura_arriba);
-
-//     else if (angle == 135.0f)
-//         persona.setTexture(textura_arriba_i);
-
-//     else if (angle == 180.0f || angle == -180.0f)
-//         persona.setTexture(textura_izquierda);
-
-//     else if (angle == -135.0f)
-//         persona.setTexture(textura_abajo_i);
-
-//     else if (angle == -90.0f)
-//         persona.setTexture(textura_abajo);
-
-//     else if (angle == -45.0f)
-//         persona.setTexture(textura_abajo_d);
-// }
 
 void Jugador::setSize(float width, float height){
     persona.setScale(width/persona.getLocalBounds().width, height/persona.getLocalBounds().height);

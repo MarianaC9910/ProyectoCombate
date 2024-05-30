@@ -17,18 +17,6 @@ class Jugador{
 
     public: 
 
-    // Texture tex; 
-    // Texture textura_derecha;
-    // Texture textura_izquierda;
-
-    //  Texture textura_arriba;
-    //  Texture textura_arriba_d;
-    //  Texture textura_arriba_i;
-
-    //  Texture textura_abajo;
-    //  Texture textura_abajo_d;
-    //  Texture textura_abajo_i;
-
     Sprite persona;
 
     Jugador();
