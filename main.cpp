@@ -7,14 +7,14 @@ using namespace std;
 
 int main()
 {
-    RenderWindow window(VideoMode(200, 200), "SFML works!");
+    RenderWindow window(VideoMode(800, 800), "SFML works!");
     window.setFramerateLimit(60);
 
     Texture fondoprueba;
-    fondoprueba.loadFromFile("texturas/bc.png");
+    fondoprueba.loadFromFile("texturas/bc1.png");
     Sprite fondo;
     fondo.setTexture(fondoprueba);
-    fondo.setTextureRect(IntRect(0, 0, 200, 200));
+    fondo.setTextureRect(IntRect(0, 0, 800, 800));
 
     Texture bulletv;
     bulletv.loadFromFile("texturas/bullet_v");
@@ -52,7 +52,7 @@ int main()
     Jugador jugador("Player1", 100, 10);
     jugador.persona.setTexture(tex);
 
-    jugador.setSize(50, 50);
+    jugador.setSize(120, 120);
 
     Vector2u windowSize = window.getSize();
     float startX = windowSize.x / 2.0f - jugador.persona.getGlobalBounds().width / 2.0f;
