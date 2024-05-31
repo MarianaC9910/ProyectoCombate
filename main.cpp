@@ -37,6 +37,18 @@ int main()
     Texture atras;
     atras.loadFromFile("texturas/atras.png");
 
+    Texture monster_up;
+    monster_up.loadFromFile("texturas/monster_up.png"); 
+
+    Texture monster_down; 
+    monster_up.loadFromFile("texturas/monster_down.png"); 
+
+    Texture monster_der; 
+    monster_up.loadFromFile("texturas/monster_der.png"); 
+
+    Texture monster_izq; 
+    monster_up.loadFromFile("texturas/monster_izq.png"); 
+
     Jugador jugador("Player1", 100, 10);
     jugador.persona.setTexture(tex);
 
