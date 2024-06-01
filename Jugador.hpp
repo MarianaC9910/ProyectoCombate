@@ -4,16 +4,20 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <cmath>
+#include <vector>
 
 using namespace std;
 using namespace sf;
+
+class Bala;
+
 class Jugador{
     private:
     string nombre;
     int vida;
     int danio;
     int posx,posy;
-    
+    vector<Bala>disparos
 
     public: 
 
