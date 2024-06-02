@@ -4,9 +4,18 @@
 using namespace sf;
 using namespace std;
 #include "Jugador.hpp"
+#include "Enemigos.hpp"
+#include <vector>
+//#include "Balas.hpp"
+
+bool juegoTerminado = false;
 
 int main()
 {
+    vector<Enemigo>enemigos;
+    int killCount=0;
+    int eVivos=1;
+
     RenderWindow window(VideoMode(800, 800), "SFML works!");
     window.setFramerateLimit(60);
 
@@ -59,8 +68,20 @@ int main()
     float startY = windowSize.y / 2.0f - jugador.persona.getGlobalBounds().height / 2.0f;
     jugador.aparecer(startX, startY);
 
+
+    Enemigo enemigo(30, 10);
+    enemigo.mounstruo.setTexture(der);//pendiente arreglar textura de mounstruo
+
+    enemigo.setSize(80, 80);
+
+    float startXE = windowSize.x / 2.0f - enemigo.mounstruo.getGlobalBounds().width / 2.0f+100.0f;
+    float startYE = windowSize.y / 2.0f - enemigo.mounstruo.getGlobalBounds().height / 2.0f+100.0f;
+    enemigo.aparecer(startXE, startYE);
+    enemigos.push_back(enemigo);
+
     while (window.isOpen())
     {
+        if(juegoTerminado==false){
         Event event;
         while (window.pollEvent(event))
         {
@@ -91,15 +112,24 @@ int main()
             jugador.mover(window, Keyboard::S);
             jugador.persona.setTexture(atras);
         }
+        if (Keyboard::isKeyPressed(Keyboard::E))
+        {
+            jugador.mover(window, Keyboard::E);
+        }
 
         Vector2i mousePos = Mouse::getPosition(window);
         jugador.apuntar(window, mousePos, der, izq, frente, atras);
 
 
+
         window.clear();
         window.draw(fondo);
         jugador.draw(window);
+        for(int i=0;i<enemigos.size();i++){
+            enemigos[i].draw(window);
+        }
         window.display();
+        }
     }
 
     return 0;
