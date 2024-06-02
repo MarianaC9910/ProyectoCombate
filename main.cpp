@@ -7,16 +7,18 @@ using namespace std;
 #include "Enemigos.hpp"
 #include <vector>
 //#include "Balas.hpp"
-
+vector<Enemigo>enemigos;
+RenderWindow window(VideoMode(800, 800), "SFML works!");
+Texture monster_down, monster_izq, monster_der, monster_up;
+Vector2u windowSize = window.getSize();
 bool juegoTerminado = false;
+void generarEnemigos(int cant);
 
 int main()
 {
-    vector<Enemigo>enemigos;
     int killCount=0;
     int eVivos=1;
 
-    RenderWindow window(VideoMode(800, 800), "SFML works!");
     window.setFramerateLimit(60);
 
     Texture fondoprueba;
@@ -46,16 +48,9 @@ int main()
     Texture atras;
     atras.loadFromFile("texturas/atras.png");
 
-    Texture monster_up;
     monster_up.loadFromFile("texturas/monster_up.png"); 
-
-    Texture monster_down; 
     monster_down.loadFromFile("texturas/monster_down.png"); 
-
-    Texture monster_der; 
     monster_der.loadFromFile("texturas/monster_der.png"); 
-
-    Texture monster_izq; 
     monster_izq.loadFromFile("texturas/monster_izq.png"); 
 
     Jugador jugador("Player1", 100, 10);
@@ -63,43 +58,11 @@ int main()
 
     jugador.setSize(120, 120);
 
-    Vector2u windowSize = window.getSize();
     float startX = windowSize.x / 2.0f - jugador.persona.getGlobalBounds().width / 2.0f;
     float startY = windowSize.y / 2.0f - jugador.persona.getGlobalBounds().height / 2.0f;
     jugador.aparecer(startX, startY);
 
-    float startXE, startYE;
-    for(int i=0;i<4;i++){
-        Enemigo enemigo(50, 50, i+1);
-        switch(enemigo.tipo){
-            case 1://arriba
-                startXE = windowSize.x / 2.0f - enemigo.mounstruo.getGlobalBounds().width / 2.0f;
-                startYE = windowSize.y / 2.0f - enemigo.mounstruo.getGlobalBounds().height / 2.0f-380.0f;
-                enemigo.mounstruo.setTexture(monster_down);
-            break;
-            case 2://derecha
-                startXE = windowSize.x / 2.0f - enemigo.mounstruo.getGlobalBounds().width / 2.0f+300.0f;
-                startYE = windowSize.y / 2.0f - enemigo.mounstruo.getGlobalBounds().height / 2.0f;
-                enemigo.mounstruo.setTexture(monster_izq);
-            break;
-            case 3://abajo
-                startXE = windowSize.x / 2.0f - enemigo.mounstruo.getGlobalBounds().width / 2.0f+100.0f;
-                startYE = windowSize.y / 2.0f - enemigo.mounstruo.getGlobalBounds().height / 2.0f+300.0f;
-                enemigo.mounstruo.setTexture(monster_up);
-            break;
-            case 4://izquierda
-                startXE = windowSize.x / 2.0f - enemigo.mounstruo.getGlobalBounds().width / 2.0f-380.0f;
-                startYE = windowSize.y / 2.0f - enemigo.mounstruo.getGlobalBounds().height / 2.0f+100.0f;
-                enemigo.mounstruo.setTexture(monster_der);
-            break;
-            default:
-            break;
-        }
-        enemigo.setSize(100, 100);
-        enemigo.aparecer(startXE,startYE);
-        enemigos.push_back(enemigo);
-    }
-    
+    generarEnemigos(4);
 
     while (window.isOpen())
     {
@@ -157,4 +120,38 @@ int main()
     }
 
     return 0;
+}
+
+void generarEnemigos(int cant){
+    float startXE, startYE;
+    for(int i=0;i<cant;i++){
+        Enemigo enemigo(50, 50, i+1);
+        switch(enemigo.tipo){
+            case 1://arriba
+                startXE = windowSize.x / 2.0f - enemigo.mounstruo.getGlobalBounds().width / 2.0f;
+                startYE = windowSize.y / 2.0f - enemigo.mounstruo.getGlobalBounds().height / 2.0f-380.0f;
+                enemigo.mounstruo.setTexture(monster_down);
+            break;
+            case 2://derecha
+                startXE = windowSize.x / 2.0f - enemigo.mounstruo.getGlobalBounds().width / 2.0f+300.0f;
+                startYE = windowSize.y / 2.0f - enemigo.mounstruo.getGlobalBounds().height / 2.0f;
+                enemigo.mounstruo.setTexture(monster_izq);
+            break;
+            case 3://abajo
+                startXE = windowSize.x / 2.0f - enemigo.mounstruo.getGlobalBounds().width / 2.0f+100.0f;
+                startYE = windowSize.y / 2.0f - enemigo.mounstruo.getGlobalBounds().height / 2.0f+300.0f;
+                enemigo.mounstruo.setTexture(monster_up);
+            break;
+            case 4://izquierda
+                startXE = windowSize.x / 2.0f - enemigo.mounstruo.getGlobalBounds().width / 2.0f-380.0f;
+                startYE = windowSize.y / 2.0f - enemigo.mounstruo.getGlobalBounds().height / 2.0f+100.0f;
+                enemigo.mounstruo.setTexture(monster_der);
+            break;
+            default:
+            break;
+        }
+        enemigo.setSize(100, 100);
+        enemigo.aparecer(startXE,startYE);
+        enemigos.push_back(enemigo);
+    }
 }
