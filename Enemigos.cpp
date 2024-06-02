@@ -46,45 +46,26 @@ void Enemigo::draw(RenderWindow& window){
 
 void Enemigo::mover(RenderWindow& window, Jugador player){
     Vector2u ventanaSize = window.getSize(); 
-    int speed=10+rand()%10;
     
     int windowWidth = ventanaSize.x;  // obtenemos el ancho de la ventana
     int windowHeight = ventanaSize.y; // obtenemos el alto de la ventana
     if(this->tipo%2==1){
         if(this->posx<player.posx){
-            if(this->posx+speed>=windowWidth||this->posx<windowWidth-1||this->posx+speed>player.posx){
-                this->posx++;
-            }else{
-                this->posx+=speed;
-            }
+            this->posx+=2;
         }else if(this->posx>player.posx){
-            if(this->posx-speed<=0||this->posx<2&&this->posx-speed<player.posx){
-                this->posx--;
-            }else{
-                this->posx-=speed;
-            }
+            this->posx-=2;
         }else{
             atacar();
         }
     }else{
         if(this->posy<player.posy){
-            if(this->posy+speed>=windowHeight||this->posy<windowHeight-1||this->posy+speed>player.posy){
-                this->posy++;
-            }else{
-                this->posy+=speed;
-            }
+            this->posy+=2;
         }else if(this->posy>player.posy){
-            if(this->posy-speed<=0||this->posy<2&&this->posy-speed<player.posy){
-                this->posy--;
-            }else{
-                this->posy-=speed;
-            }
+            this->posy-=2;
         }else{
             atacar();
         }
     }
-    
-
     mounstruo.setPosition(posx, posy);
 }
     //revisa coordenadas del jugador y se mueve hacia ellas 
