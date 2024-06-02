@@ -9,28 +9,31 @@ Enemigo::Enemigo()
     mounstruo.setPosition(posx, posy);
 };
 
-Enemigo::Enemigo(float startX, float startY)
+Enemigo::Enemigo(float startX, float startY, int type)
 {
     this->vida = 20;
     this->danio = 10; 
+    this->tipo = type;
     posx = startX;
     posy = startY;
     mounstruo.setPosition(posx, posy);
     
 }
-Enemigo::Enemigo(int vid,float startX, float startY)
+Enemigo::Enemigo(int vid,float startX, float startY, int type)
 {
     this->vida = vid;
     this->danio=10;
+    this->tipo=type;
     posx = startX;
     posy = startY;
     mounstruo.setPosition(posx, posy);
     mounstruo.setPosition(posx, posy);
 }
-Enemigo::Enemigo(int vid, int dan, float startX, float startY)
+Enemigo::Enemigo(int vid, int dan, float startX, float startY, int type)
 {
     this->vida = vid;
     this->danio = dan;
+    this->tipo = type;
     posx = startX;
     posy = startY;
     mounstruo.setPosition(posx, posy);
@@ -41,28 +44,46 @@ void Enemigo::draw(RenderWindow& window){
 }
 
 
-void Enemigo::mover(RenderWindow& window, int posActY){
+void Enemigo::mover(RenderWindow& window, Jugador player){
     Vector2u ventanaSize = window.getSize(); 
-    int speed=rand()%12;
+    int speed=10+rand()%10;
     
     int windowWidth = ventanaSize.x;  // obtenemos el ancho de la ventana
     int windowHeight = ventanaSize.y; // obtenemos el alto de la ventana
-
-    if(posActY<this->posy){
-        if(this->posy-speed<=0&&this->posy>1&&this->posy-speed<posActY){
-            this->posy--;
+    if(this->tipo%2==1){
+        if(this->posx<player.posx){
+            if(this->posx+speed>=windowWidth||this->posx<windowWidth-1||this->posx+speed>player.posx){
+                this->posx++;
+            }else{
+                this->posx+=speed;
+            }
+        }else if(this->posx>player.posx){
+            if(this->posx-speed<=0||this->posx<2&&this->posx-speed<player.posx){
+                this->posx--;
+            }else{
+                this->posx-=speed;
+            }
         }else{
-            this->posy-=speed;
-        }
-    }else if(posActY>this->posy){
-        if(this->posy+speed>=800&&this->posy<799&&this->posy+speed>posActY){
-            this->posy++;
-        }else{
-            this->posy-=speed;
+            atacar();
         }
     }else{
-        atacar();
+        if(this->posy<player.posy){
+            if(this->posy+speed>=windowHeight||this->posy<windowHeight-1||this->posy+speed>player.posy){
+                this->posy++;
+            }else{
+                this->posy+=speed;
+            }
+        }else if(this->posy>player.posy){
+            if(this->posy-speed<=0||this->posy<2&&this->posy-speed<player.posy){
+                this->posy--;
+            }else{
+                this->posy-=speed;
+            }
+        }else{
+            atacar();
+        }
     }
+    
 
     mounstruo.setPosition(posx, posy);
 }
