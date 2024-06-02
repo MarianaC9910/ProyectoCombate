@@ -12,11 +12,9 @@ class Jugador{
     string nombre;
     int vida;
     int danio;
-    int posx,posy;
-    
 
     public: 
-
+    int posx,posy;
     Sprite persona;
 
     Jugador();
