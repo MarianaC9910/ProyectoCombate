@@ -69,13 +69,13 @@ int main()
     jugador.aparecer(startX, startY);
 
 
-    Enemigo enemigo(30, 10);
-    enemigo.mounstruo.setTexture(der);//pendiente arreglar textura de mounstruo
+    Enemigo enemigo(50, 50, 1);
+    enemigo.mounstruo.setTexture(monster_up);
 
-    enemigo.setSize(80, 80);
+    enemigo.setSize(100, 100);
 
-    float startXE = windowSize.x / 2.0f - enemigo.mounstruo.getGlobalBounds().width / 2.0f+100.0f;
-    float startYE = windowSize.y / 2.0f - enemigo.mounstruo.getGlobalBounds().height / 2.0f+100.0f;
+    float startXE = windowSize.x / 2.0f - enemigo.mounstruo.getGlobalBounds().width / 2.0f+300.0f;
+    float startYE = windowSize.y / 2.0f - enemigo.mounstruo.getGlobalBounds().height / 2.0f+350.0f;
     enemigo.aparecer(startXE, startYE);
     enemigos.push_back(enemigo);
 
