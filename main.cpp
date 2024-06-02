@@ -103,7 +103,7 @@ int main()
 
     while (window.isOpen())
     {
-        if(juegoTerminado==false){
+        while(juegoTerminado==false){
         Event event;
         while (window.pollEvent(event))
         {
@@ -141,7 +141,9 @@ int main()
 
         Vector2i mousePos = Mouse::getPosition(window);
         jugador.apuntar(window, mousePos, der, izq, frente, atras);
-
+        for(int i=0;i<enemigos.size(); i++){
+            enemigos[i].mover(window, jugador);
+        }
 
 
         window.clear();
