@@ -68,16 +68,38 @@ int main()
     float startY = windowSize.y / 2.0f - jugador.persona.getGlobalBounds().height / 2.0f;
     jugador.aparecer(startX, startY);
 
-
-    Enemigo enemigo(50, 50, 1);
-    enemigo.mounstruo.setTexture(monster_up);
-
-    enemigo.setSize(100, 100);
-
-    float startXE = windowSize.x / 2.0f - enemigo.mounstruo.getGlobalBounds().width / 2.0f+300.0f;
-    float startYE = windowSize.y / 2.0f - enemigo.mounstruo.getGlobalBounds().height / 2.0f+350.0f;
-    enemigo.aparecer(startXE, startYE);
-    enemigos.push_back(enemigo);
+    float startXE, startYE;
+    for(int i=0;i<4;i++){
+        Enemigo enemigo(50, 50, i+1);
+        switch(enemigo.tipo){
+            case 1://arriba
+                startXE = windowSize.x / 2.0f - enemigo.mounstruo.getGlobalBounds().width / 2.0f;
+                startYE = windowSize.y / 2.0f - enemigo.mounstruo.getGlobalBounds().height / 2.0f-380.0f;
+                enemigo.mounstruo.setTexture(monster_down);
+            break;
+            case 2://derecha
+                startXE = windowSize.x / 2.0f - enemigo.mounstruo.getGlobalBounds().width / 2.0f+300.0f;
+                startYE = windowSize.y / 2.0f - enemigo.mounstruo.getGlobalBounds().height / 2.0f;
+                enemigo.mounstruo.setTexture(monster_izq);
+            break;
+            case 3://abajo
+                startXE = windowSize.x / 2.0f - enemigo.mounstruo.getGlobalBounds().width / 2.0f+100.0f;
+                startYE = windowSize.y / 2.0f - enemigo.mounstruo.getGlobalBounds().height / 2.0f+300.0f;
+                enemigo.mounstruo.setTexture(monster_up);
+            break;
+            case 4://izquierda
+                startXE = windowSize.x / 2.0f - enemigo.mounstruo.getGlobalBounds().width / 2.0f-380.0f;
+                startYE = windowSize.y / 2.0f - enemigo.mounstruo.getGlobalBounds().height / 2.0f+100.0f;
+                enemigo.mounstruo.setTexture(monster_der);
+            break;
+            default:
+            break;
+        }
+        enemigo.setSize(100, 100);
+        enemigo.aparecer(startXE,startYE);
+        enemigos.push_back(enemigo);
+    }
+    
 
     while (window.isOpen())
     {
