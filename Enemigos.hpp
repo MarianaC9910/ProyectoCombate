@@ -5,6 +5,8 @@
 #include <string>
 #include <cmath>
 #include <vector>
+#include "Jugador.hpp"
+//#include "Balas.hpp"
 
 using namespace std;
 using namespace sf;
@@ -15,17 +17,18 @@ private:
     int vida;
     int danio;
     int posx,posy;
-    //vector<Bala>disparos;
 public: 
+    int tipo;//Segun el lugar donde aparezcan arriba:1, derecha:2, abajo:3, izquierda:4
+    //vector<Bala>disparos;
     Sprite mounstruo;
 
     Enemigo();
-    Enemigo(float startX, float startY);
-    Enemigo(int vid, float startX, float startY);
-    Enemigo(int vid, int dan, float startX, float startY);
+    Enemigo(float startX, float startY, int type);
+    Enemigo(int vid, float startX, float startY, int type);
+    Enemigo(int vid, int dan, float startX, float startY, int type);
 
     void draw(RenderWindow& window);
-    void mover(RenderWindow& window, int posActY);//revisa coordenadas del jugador y se mueve hacia ellas 
+    void mover(RenderWindow& window, Jugador player);//revisa coordenadas del jugador y se mueve hacia ellas 
     void aparecer(int x, int y);
     void atacar();
     void setSize(float width, float height);
