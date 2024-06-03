@@ -5,21 +5,25 @@
 #include <string>
 #include <cmath>
 #include <vector>
+//#include "Globales.hpp"
 #include "Jugador.hpp"
-//#include "Balas.hpp"
+#include "Balas.hpp"
 
 using namespace std;
 using namespace sf;
+
+
 class Bala;
 class Jugador;
 class Enemigo{
 private:
     int vida;
     int danio;
-    int posx,posy;
-public: 
+    int time;
+public:
+    int posx,posy; 
     int tipo;//Segun el lugar donde aparezcan arriba:1, derecha:2, abajo:3, izquierda:4
-    //vector<Bala>disparos;
+    vector<Bala>disparos;
     Sprite mounstruo;
 
     Enemigo();
