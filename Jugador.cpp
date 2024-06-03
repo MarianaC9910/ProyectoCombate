@@ -91,6 +91,44 @@ void Jugador::aparecer(int x, int y)
 }
 void Jugador::atacar()
 {
+    Texture bulletv;
+    Texture bulleth;
+
+    bulletv.loadFromFile("texturas/bullet_v.png");
+    bulleth.loadFromFile("texturas/bullet_h.png");
+
+    float startXB, startYB;
+    Bala disparo(50, 50, this->vista);
+    switch(disparo.dir){
+        case 1://la bala va hacia abajo
+            disparo.bullet.setTexture(bulletv);
+            disparo.setSize(5, 10);
+            startXB = this->posx+47.0f;
+            startYB = this->posy+77.0f;
+        break;
+        case 2://izquierda
+            disparo.bullet.setTexture(bulleth);
+            disparo.setSize(10, 5);
+            startXB = this->posx;
+            startYB = this->posy+60.0f;
+        break;
+        case 3://arriba
+            disparo.bullet.setTexture(bulletv);
+            disparo.setSize(5, 10);
+            startXB = this->posx + 55.0f;
+            startYB = this->posy;
+        break;
+        case 4://derecha
+            disparo.bullet.setTexture(bulleth);
+            disparo.setSize(10, 5);
+            startXB = this->posx+120.0f;
+            startYB = this->posy+60.0f;
+        break;
+        default:
+        break;
+    }
+        disparo.aparecer(startXB,startYB);
+        this->disparos.push_back(disparo);
 }
 
 void Jugador::apuntar(RenderWindow &window, const Vector2i& mousePos, Texture& texDerecha, Texture& texIzquierda, Texture& texArriba, Texture& texAbajo){
@@ -109,14 +147,18 @@ void Jugador::apuntar(RenderWindow &window, const Vector2i& mousePos, Texture& t
     if (abs(dx) > abs(dy)) { //mouse esta mas desplazado en la direccion horizontal
         if (dx > 0) { 
             persona.setTexture(texDerecha); // Derecha
+            this->vista=4;
         } else {
             persona.setTexture(texIzquierda); // Izquierda
+            this->vista=2;
         }
     } else {    //mouse esta mas desplazado en la direccion vertical
         if (dy > 0) {
             persona.setTexture(texAbajo); // Abajo
+            this->vista=1;
         } else {
             persona.setTexture(texArriba); // Arriba
+            this->vista=3;
         }
     }
 
@@ -125,3 +167,9 @@ void Jugador::apuntar(RenderWindow &window, const Vector2i& mousePos, Texture& t
 void Jugador::setSize(float width, float height){
     persona.setScale(width/persona.getLocalBounds().width, height/persona.getLocalBounds().height);
 };
+void Jugador::atacado(){
+    this->vida-=this->danio;
+}
+int Jugador::getVida(){
+    return this->vida;
+}
