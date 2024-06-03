@@ -13,12 +13,14 @@ Texture monster_down, monster_izq, monster_der, monster_up;
 Vector2u windowSize = window.getSize();
 bool juegoTerminado = false;
 void generarEnemigos(int cant);
+bool intersectaJ(Jugador player, Bala disp);
+bool intersectaE(Enemigo enemy, Bala disp);
 
 int main()
 {
     int killCount=0;
-    int eVivos=1;
-
+    int oActual=4;
+    
     window.setFramerateLimit(60);
 
     Texture fondoprueba;
@@ -62,7 +64,7 @@ int main()
     float startY = windowSize.y / 2.0f - jugador.persona.getGlobalBounds().height / 2.0f;
     jugador.aparecer(startX, startY);
 
-    generarEnemigos(4);
+    generarEnemigos(oActual);
 
     while (window.isOpen())
     {
@@ -104,16 +106,36 @@ int main()
 
         Vector2i mousePos = Mouse::getPosition(window);
         jugador.apuntar(window, mousePos, der, izq, frente, atras);
+        for(int i=0;i<jugador.disparos.size();i++){
+            jugador.disparos[i].mover(window);
+        }
         for(int i=0;i<enemigos.size(); i++){
             enemigos[i].mover(window, jugador);
+            for(int j=0;j<enemigos[i].disparos.size();j++){
+                enemigos[i].disparos[j].mover(window);
+                if(intersectaJ(jugador, enemigos[i].disparos[j]) == true){
+                    jugador.atacado();
+                    enemigos[i].disparos.erase(enemigos[i].disparos.begin()+i);
+                    if(jugador.getVida()<=0){
+                        juegoTerminado=true;
+                    }
+                }
+            }
         }
+        
 
-
+        
         window.clear();
         window.draw(fondo);
         jugador.draw(window);
+        for(int i=0;i<jugador.disparos.size();i++){
+            jugador.disparos[i].draw(window);
+        }
         for(int i=0;i<enemigos.size();i++){
             enemigos[i].draw(window);
+            for(int j=0;j<enemigos[i].disparos.size();j++){
+                enemigos[i].disparos[j].draw(window);
+            }
         }
         window.display();
         }
@@ -153,5 +175,49 @@ void generarEnemigos(int cant){
         enemigo.setSize(100, 100);
         enemigo.aparecer(startXE,startYE);
         enemigos.push_back(enemigo);
+    }
+}
+bool intersectaJ(Jugador player, Bala disp){
+    bool interX, interY;
+    if(disp.posx>=player.posx&&disp.posx<=player.posx+120.0f){
+        bool interX=true;
+    }else if(disp.posx+10.0f>=player.posx&&disp.posx+10.0f<=player.posx+120.0f){
+        bool interX=true;
+    }else{
+        bool interX=false;
+    }
+    if(disp.posy>=player.posy&&disp.posy<=player.posy+120.0f){
+        bool interY=true;
+    }else if(disp.posy+10.0f>=player.posy&&disp.posy+10.0f<=player.posy+120.0f){
+        bool interY=true;
+    }else{
+        bool interY=false;
+    }
+    if(interX==true&&interY==true){
+        return true;
+    }else{
+        return false;
+    }
+}
+bool intersectaE(Enemigo enemy, Bala disp){
+    bool interX, interY;
+    if(disp.posx>=enemy.posx&&disp.posx<=enemy.posx+100.0f){
+        bool interX=true;
+    }else if(disp.posx+10.0f>=enemy.posx&&disp.posx+10.0f<=enemy.posx+100.0f){
+        bool interX=true;
+    }else{
+        bool interX=false;
+    }
+    if(disp.posy>=enemy.posy&&disp.posy<=enemy.posy+100.0f){
+        bool interY=true;
+    }else if(disp.posy+10.0f>=enemy.posy&&disp.posy+10.0f<=enemy.posy+100.0f){
+        bool interY=true;
+    }else{
+        bool interY=false;
+    }
+    if(interX==true&&interY==true){
+        return true;
+    }else{
+        return false;
     }
 }
