@@ -40,6 +40,7 @@ void Bala::aparecer(int x, int y){
 }
 void Bala::setSize(float width, float height){
     bullet.setScale(width/bullet.getLocalBounds().width, height/bullet.getLocalBounds().height);
+    this->ancho=width/bullet.getLocalBounds().width;
+    this->alto=height/bullet.getLocalBounds().height;
 }
-
 
