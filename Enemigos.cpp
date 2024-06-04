@@ -105,7 +105,7 @@ void Enemigo::atacar(){
         case 3://arriba
             disparo.bullet.setTexture(bulletv);
             startXB = this->posx+45.0f;
-            startYB = this->posy+5.0f;
+            startYB = this->posy+5;
         break;
         case 4://derecha
             disparo.bullet.setTexture(bulleth);
