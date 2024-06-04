@@ -10,8 +10,6 @@
 using namespace std;
 using namespace sf;
 
-
-
 class Bala{
   private:
     int speed;
@@ -19,6 +17,7 @@ class Bala{
 
     public: 
     int posx,posy;
+    float ancho, alto;
     int dir;//1: abajo, 2:izquierda, 3:arriba, 4:derecha
 
     Sprite bullet;
@@ -32,3 +31,4 @@ class Bala{
 };
 
 #endif
+
