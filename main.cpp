@@ -15,12 +15,14 @@ bool juegoTerminado = false;
 void generarEnemigos(int cant);
 bool intersectaJ(Jugador player, Bala disp);
 bool intersectaE(Enemigo enemy, Bala disp);
+void reiniciarPartida(Jugador player);
+
+int killCount=0;
+int oActual=4;
+int sobrevivientes=0;
 
 int main()
 {
-    int killCount=0;
-    int oActual=4;
-    
     window.setFramerateLimit(60);
 
     Texture fondoprueba;
@@ -30,10 +32,10 @@ int main()
     fondo.setTextureRect(IntRect(0, 0, 800, 800));
 
     Texture bulletv;
-    bulletv.loadFromFile("texturas/bullet_v");
+    bulletv.loadFromFile("texturas/bullet_v.png");
 
     Texture bulleth;
-    bulleth.loadFromFile("texturas/bullet_h");
+    bulleth.loadFromFile("texturas/bullet_h.png");
 
     Texture tex;
     tex.loadFromFile("texturas/tex.png");
@@ -68,7 +70,12 @@ int main()
 
     while (window.isOpen())
     {
-        while(juegoTerminado==false){
+        if(sobrevivientes==0){
+            oActual++;
+            generarEnemigos(oActual);
+            sobrevivientes=oActual;
+        }
+        
         Event event;
         while (window.pollEvent(event))
         {
@@ -109,6 +116,13 @@ int main()
         for(int i=0;i<jugador.disparos.size();i++){
             jugador.disparos[i].mover(window);
         }
+        for(int i=0;i<jugador.disparos.size();i++){
+            for(int j=0;j<enemigos.size();j++){
+                if(intersectaE(enemigos[j], jugador.disparos[i])==true){
+                    enemigos.erase(enemigos.begin() +i);
+                }
+            }
+        }
         for(int i=0;i<enemigos.size(); i++){
             enemigos[i].mover(window, jugador);
             for(int j=0;j<enemigos[i].disparos.size();j++){
@@ -138,7 +152,10 @@ int main()
             }
         }
         window.display();
-        }
+        
+        if(juegoTerminado==true){
+            reiniciarPartida(jugador);
+        }; 
     }
 
     return 0;
@@ -147,7 +164,7 @@ int main()
 void generarEnemigos(int cant){
     float startXE, startYE;
     for(int i=0;i<cant;i++){
-        Enemigo enemigo(50, 50, i+1);
+        Enemigo enemigo(50, 50, i%5);
         switch(enemigo.tipo){
             case 1://arriba
                 startXE = windowSize.x / 2.0f - enemigo.mounstruo.getGlobalBounds().width / 2.0f;
@@ -178,20 +195,24 @@ void generarEnemigos(int cant){
     }
 }
 bool intersectaJ(Jugador player, Bala disp){
-    bool interX, interY;
-    if(disp.posx>=player.posx&&disp.posx<=player.posx+120.0f){
-        bool interX=true;
-    }else if(disp.posx+10.0f>=player.posx&&disp.posx+10.0f<=player.posx+120.0f){
-        bool interX=true;
-    }else{
-        bool interX=false;
+    bool interX=false;
+    bool interY=false;
+    int x1,x2,x3,x4,y1,y2,y3,y4;
+    x1=player.posx+25.0f;
+    y1=player.posy;    
+    x2=player.posx+72.0f;
+    y2=player.posy+120.0f;
+    
+    x3=disp.posx;
+    x4=disp.posx+disp.ancho;
+    y3=disp.posy;
+    y4=disp.posy+disp.alto;
+
+    if((x3>=x1&&x3<=x2)||(x4>=x1&&x4<=x2)){
+        interX=true;
     }
-    if(disp.posy>=player.posy&&disp.posy<=player.posy+120.0f){
-        bool interY=true;
-    }else if(disp.posy+10.0f>=player.posy&&disp.posy+10.0f<=player.posy+120.0f){
-        bool interY=true;
-    }else{
-        bool interY=false;
+    if((y3>=y1&&y3<=y2)||(y4>=y1&&y4<=y2)){
+        interY=true;
     }
     if(interX==true&&interY==true){
         return true;
@@ -200,24 +221,64 @@ bool intersectaJ(Jugador player, Bala disp){
     }
 }
 bool intersectaE(Enemigo enemy, Bala disp){
-    bool interX, interY;
-    if(disp.posx>=enemy.posx&&disp.posx<=enemy.posx+100.0f){
-        bool interX=true;
-    }else if(disp.posx+10.0f>=enemy.posx&&disp.posx+10.0f<=enemy.posx+100.0f){
-        bool interX=true;
-    }else{
-        bool interX=false;
+    bool interX=false;
+    bool interY=false;
+    int x1,x2,x3,x4,y1,y2,y3,y4;
+    switch(enemy.tipo){
+        case 1:
+            x1=enemy.posx+20.0f;
+            y1=enemy.posy+20.0f;    
+            x2=enemy.posx+75.0f;
+            y2=enemy.posy+85.0f;
+        break;
+        case 2:
+            x1=enemy.posx+15.0f;
+            y1=enemy.posy+15.0f;    
+            x2=enemy.posx+60.0f;
+            y2=enemy.posy+75.0f;
+        break;
+        case 3:
+            x1=enemy.posx+20.0f;
+            y1=enemy.posy+5.0f;    
+            x2=enemy.posx+75.0f;
+            y2=enemy.posy+55.0f;
+        break;
+        case 4://
+            x1=enemy.posx+25.0f;
+            y1=enemy.posy+10.0f;    
+            x2=enemy.posx+75.0f;
+            y2=enemy.posy+70.0f;
+        break;
+        default:
+        break;
     }
-    if(disp.posy>=enemy.posy&&disp.posy<=enemy.posy+100.0f){
-        bool interY=true;
-    }else if(disp.posy+10.0f>=enemy.posy&&disp.posy+10.0f<=enemy.posy+100.0f){
-        bool interY=true;
-    }else{
-        bool interY=false;
+    
+    
+    x3=disp.posx;
+    x4=disp.posx+disp.ancho;
+    y3=disp.posy;
+    y4=disp.posy+disp.alto;
+
+    if((x3>=x1&&x3<=x2)||(x4>=x1&&x4<=x2)){
+        interX=true;
+    }
+    if((y3>=y1&&y3<=y2)||(y4>=y1&&y4<=y2)){
+        interY=true;
     }
     if(interX==true&&interY==true){
+        sobrevivientes--;
         return true;
     }else{
         return false;
     }
+}
+void reiniciarPartida(Jugador player){
+    oActual=1;
+    sobrevivientes=0;
+    killCount=0;
+    float startX = windowSize.x / 2.0f - player.persona.getGlobalBounds().width / 2.0f;
+    float startY = windowSize.y / 2.0f - player.persona.getGlobalBounds().height / 2.0f;
+    player.aparecer(startX, startY);
+    enemigos.clear();
+    juegoTerminado=false;
 }
