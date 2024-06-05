@@ -13,13 +13,12 @@ using namespace sf;
 class Bala{
   private:
     int speed;
-    bool estado;//estado==true cuando la bala no ha salido del mapa o intersectado con un personaje
 
     public: 
     int posx,posy;
     float ancho, alto;
     int dir;//1: abajo, 2:izquierda, 3:arriba, 4:derecha
-
+    bool estado;//estado==true cuando la bala no ha salido del mapa o intersectado con un personaje
     Sprite bullet;
 
     Bala(float startX, float startY, int direc);
