@@ -74,6 +74,7 @@ int main()
             oActual++;
             generarEnemigos(oActual);
             sobrevivientes=oActual;
+            jugador.reiniciar();
         }
         
         Event event;
@@ -114,27 +115,36 @@ int main()
         Vector2i mousePos = Mouse::getPosition(window);
         jugador.apuntar(window, mousePos, der, izq, frente, atras);
         for(int i=0;i<jugador.disparos.size();i++){
+            if(jugador.disparos[i].estado==true)
             jugador.disparos[i].mover(window);
         }
         for(int i=0;i<jugador.disparos.size();i++){
             for(int j=0;j<enemigos.size();j++){
-                if(intersectaE(enemigos[j], jugador.disparos[i])==true){
-                    enemigos.erase(enemigos.begin() +i);
+
+                if(intersectaE(enemigos[j], jugador.disparos[i])==true&&jugador.disparos[i].estado==true){
+                    enemigos[j].vivo=false;
                 }
             }
         }
         for(int i=0;i<enemigos.size(); i++){
-            enemigos[i].mover(window, jugador);
-            for(int j=0;j<enemigos[i].disparos.size();j++){
-                enemigos[i].disparos[j].mover(window);
-                if(intersectaJ(jugador, enemigos[i].disparos[j]) == true){
-                    jugador.atacado();
-                    enemigos[i].disparos.erase(enemigos[i].disparos.begin()+i);
-                    if(jugador.getVida()<=0){
-                        juegoTerminado=true;
+            if(enemigos[i].vivo=true){
+                enemigos[i].mover(window, jugador);
+                for(int j=0;j<enemigos[i].disparos.size();j++){
+                    if(enemigos[i].disparos[j].estado==true){
+                        enemigos[i].disparos[j].mover(window);
+                        if(intersectaJ(jugador, enemigos[i].disparos[j]) == true){
+                            jugador.atacado();
+                            enemigos[i].disparos[j].estado=false;
+                            //enemigos[i].disparos.erase(enemigos[i].disparos.begin()+i);
+                            if(jugador.getVida()<=0){
+                                juegoTerminado=true;
+                            }
+                        }
+
                     }
                 }
             }
+            
         }
         
 
@@ -143,12 +153,16 @@ int main()
         window.draw(fondo);
         jugador.draw(window);
         for(int i=0;i<jugador.disparos.size();i++){
-            jugador.disparos[i].draw(window);
+            if(jugador.disparos[i].estado==true)
+                jugador.disparos[i].draw(window);
         }
         for(int i=0;i<enemigos.size();i++){
-            enemigos[i].draw(window);
-            for(int j=0;j<enemigos[i].disparos.size();j++){
-                enemigos[i].disparos[j].draw(window);
+            if(enemigos[i].vivo==true){
+                enemigos[i].draw(window);
+                for(int j=0;j<enemigos[i].disparos.size();j++){
+                    if(enemigos[i].disparos[j].estado==true)
+                        enemigos[i].disparos[j].draw(window);
+                }
             }
         }
         window.display();
@@ -240,14 +254,14 @@ bool intersectaE(Enemigo enemy, Bala disp){
         case 3:
             x1=enemy.posx+20.0f;
             y1=enemy.posy+5.0f;    
-            x2=enemy.posx+75.0f;
-            y2=enemy.posy+55.0f;
+            x2=enemy.posx+80.0f;
+            y2=enemy.posy+60.0f;
         break;
-        case 4://
+        case 4:
             x1=enemy.posx+25.0f;
             y1=enemy.posy+10.0f;    
             x2=enemy.posx+75.0f;
-            y2=enemy.posy+70.0f;
+            y2=enemy.posy+75.0f;
         break;
         default:
         break;
@@ -267,6 +281,7 @@ bool intersectaE(Enemigo enemy, Bala disp){
     }
     if(interX==true&&interY==true){
         sobrevivientes--;
+        //enemy.vivo=false;
         return true;
     }else{
         return false;
@@ -280,5 +295,6 @@ void reiniciarPartida(Jugador player){
     float startY = windowSize.y / 2.0f - player.persona.getGlobalBounds().height / 2.0f;
     player.aparecer(startX, startY);
     enemigos.clear();
+    player.reiniciar();
     juegoTerminado=false;
 }
