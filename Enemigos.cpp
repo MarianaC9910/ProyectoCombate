@@ -18,6 +18,7 @@ Enemigo::Enemigo(float startX, float startY, int type)
     this->tipo = type;
     this->time=0;
     this->vivo = true;
+    this->speed=rand()%1+4;
     posx = startX;
     posy = startY;
     mounstruo.setPosition(posx, posy);
@@ -56,18 +57,18 @@ void Enemigo::mover(RenderWindow& window, Jugador player){
     int windowHeight = ventanaSize.y; // obtenemos el alto de la ventana
     if(this->tipo%2==1){
         if(this->posx<player.posx){
-            this->posx+=2;
+            this->posx+=this->speed;
         }else if(this->posx>player.posx){
-            this->posx-=2;
+            this->posx-=this->speed;
         }else{
             if(this->time%100==0)
                 atacar();
         }
     }else{
         if(this->posy<player.posy){
-            this->posy+=2;
+            this->posy+=this->speed;
         }else if(this->posy>player.posy){
-            this->posy-=2;
+            this->posy-=this->speed;
         }else{
             if(this->time%100==0)
                 atacar();        
