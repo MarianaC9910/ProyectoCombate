@@ -20,6 +20,7 @@ private:
     int vida;
     int danio;
     int time;
+    int speed;
 public:
     int posx,posy;
     bool vivo; 
