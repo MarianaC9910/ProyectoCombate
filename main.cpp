@@ -6,7 +6,11 @@ using namespace std;
 #include "Jugador.hpp"
 #include "Enemigos.hpp"
 #include <vector>
-//#include "Balas.hpp"
+#include "Balas.hpp"
+
+Texture bulletv;
+Texture bulleth;    
+
 vector<Enemigo>enemigos;
 RenderWindow window(VideoMode(800, 800), "SFML works!");
 Texture monster_down, monster_izq, monster_der, monster_up;
@@ -17,12 +21,14 @@ bool intersectaJ(Jugador player, Bala disp);
 bool intersectaE(Enemigo enemy, Bala disp);
 void reiniciarPartida(Jugador player);
 
-int killCount=0;
-int oActual=4;
-int sobrevivientes=0;
+    int killCount=0;
+    int oActual=2;
+    int sobrevivientes= 0;
+    int partidas = 1;
 
 int main()
 {
+    
     window.setFramerateLimit(60);
 
     Texture fondoprueba;
@@ -69,14 +75,14 @@ int main()
     generarEnemigos(oActual);
 
     while (window.isOpen())
-    {
-        if(sobrevivientes<=0){
+    {    
+        if(sobrevivientes<=0&&juegoTerminado==false){
             oActual++;
-            generarEnemigos(oActual);
-            sobrevivientes=oActual;
+            sobrevivientes=0;
             jugador.reiniciar();
+            generarEnemigos(oActual);
         }
-        
+
         Event event;
         while (window.pollEvent(event))
         {
@@ -120,14 +126,19 @@ int main()
                 for(int j=0;j<enemigos.size();j++){
                     if(intersectaE(enemigos[j], jugador.disparos[i])==true){
                         enemigos[j].vivo=false;
+                        jugador.disparos[i].estado=false;
                     }
                 }
             }
         }
+        /*for(int i=0;i<jugador.disparos.size();i++){
+            jugador.disparos.erase(jugador.disparos.begin()+i);
+        }*/
         for(int i=0;i<enemigos.size();i++){
             if(enemigos[i].vivo==false){
                 enemigos.erase(enemigos.begin()+i);
                 sobrevivientes--;
+                killCount++;
             }
         }
         for(int i=0;i<enemigos.size(); i++){
@@ -175,6 +186,9 @@ int main()
             reiniciarPartida(jugador);
         }; 
     }
+    cout<<"Resultados"<<endl;
+    cout<<"Partidas jugadas: "<<partidas<<endl;
+    cout<<"total de enemigos eliminados: "<<killCount<<endl;
 
     return 0;
 }
@@ -183,6 +197,7 @@ void generarEnemigos(int cant){
     float startXE, startYE;
     for(int i=0;i<cant;i++){
         Enemigo enemigo(50, 50, i%5);
+        inicio:
         switch(enemigo.tipo){
             case 1://arriba
                 startXE = windowSize.x / 2.0f - enemigo.mounstruo.getGlobalBounds().width / 2.0f;
@@ -205,8 +220,11 @@ void generarEnemigos(int cant){
                 enemigo.mounstruo.setTexture(monster_der);
             break;
             default:
+                enemigo.tipo=1;
+                goto inicio;
             break;
         }
+        sobrevivientes++;
         enemigo.setSize(100, 100);
         enemigo.aparecer(startXE,startYE);
         enemigos.push_back(enemigo);
@@ -284,8 +302,7 @@ bool intersectaE(Enemigo enemy, Bala disp){
         interY=true;
     }
     if(interX==true&&interY==true){
-        //sobrevivientes--;
-        //enemy.vivo=false;
+        disp.estado=false;
         return true;
     }else{
         return false;
@@ -301,4 +318,5 @@ void reiniciarPartida(Jugador player){
     enemigos.clear();
     player.reiniciar();
     juegoTerminado=false;
+    partidas++;
 }
