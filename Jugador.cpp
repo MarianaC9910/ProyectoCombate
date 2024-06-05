@@ -173,3 +173,6 @@ void Jugador::atacado(){
 int Jugador::getVida(){
     return this->vida;
 }
+void Jugador::reiniciar(){
+    this->vida=120;
+}
