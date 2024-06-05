@@ -19,7 +19,7 @@ class Enemigo{
 private:
     int vida;
     int danio;
-    int time;
+    int time;//para que haga pausas al disparar
     int speed;
 public:
     int posx,posy;
