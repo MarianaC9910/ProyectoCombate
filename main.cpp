@@ -70,7 +70,7 @@ int main()
 
     while (window.isOpen())
     {
-        if(sobrevivientes==0){
+        if(sobrevivientes<=0){
             oActual++;
             generarEnemigos(oActual);
             sobrevivientes=oActual;
@@ -115,15 +115,19 @@ int main()
         Vector2i mousePos = Mouse::getPosition(window);
         jugador.apuntar(window, mousePos, der, izq, frente, atras);
         for(int i=0;i<jugador.disparos.size();i++){
-            if(jugador.disparos[i].estado==true)
-            jugador.disparos[i].mover(window);
-        }
-        for(int i=0;i<jugador.disparos.size();i++){
-            for(int j=0;j<enemigos.size();j++){
-
-                if(intersectaE(enemigos[j], jugador.disparos[i])==true&&jugador.disparos[i].estado==true){
-                    enemigos[j].vivo=false;
+            if(jugador.disparos[i].estado==true){
+                jugador.disparos[i].mover(window);
+                for(int j=0;j<enemigos.size();j++){
+                    if(intersectaE(enemigos[j], jugador.disparos[i])==true){
+                        enemigos[j].vivo=false;
+                    }
                 }
+            }
+        }
+        for(int i=0;i<enemigos.size();i++){
+            if(enemigos[i].vivo==false){
+                enemigos.erase(enemigos.begin()+i);
+                sobrevivientes--;
             }
         }
         for(int i=0;i<enemigos.size(); i++){
@@ -280,7 +284,7 @@ bool intersectaE(Enemigo enemy, Bala disp){
         interY=true;
     }
     if(interX==true&&interY==true){
-        sobrevivientes--;
+        //sobrevivientes--;
         //enemy.vivo=false;
         return true;
     }else{
