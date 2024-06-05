@@ -175,4 +175,5 @@ int Jugador::getVida(){
 }
 void Jugador::reiniciar(){
     this->vida=120;
+    this->disparos.clear();
 }
