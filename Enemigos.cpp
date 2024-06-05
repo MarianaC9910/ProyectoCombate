@@ -125,8 +125,3 @@ void Enemigo::atacar(){
 void Enemigo::setSize(float width, float height){
     mounstruo.setScale(width/mounstruo.getLocalBounds().width, height/mounstruo.getLocalBounds().height);
 }
-
-
-void Enemigo::setSize(float width, float height){
-    mounstruo.setScale(width/mounstruo.getLocalBounds().width, height/mounstruo.getLocalBounds().height);
-}
