@@ -35,6 +35,7 @@ class Jugador{
     void setSize(float width, float height);
     void atacado();
     int getVida();
+    void reiniciar();
 };
 
 #endif
