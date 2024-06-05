@@ -13,10 +13,11 @@ Enemigo::Enemigo()
 
 Enemigo::Enemigo(float startX, float startY, int type)
 {
-    this->vida = 20;
+    this->vida = 10;
     this->danio = 10; 
     this->tipo = type;
     this->time=0;
+    this->vivo = true;
     posx = startX;
     posy = startY;
     mounstruo.setPosition(posx, posy);
@@ -105,7 +106,7 @@ void Enemigo::atacar(){
         case 3://arriba
             disparo.bullet.setTexture(bulletv);
             startXB = this->posx+45.0f;
-            startYB = this->posy+5;
+            startYB = this->posy+5.0f;
         break;
         case 4://derecha
             disparo.bullet.setTexture(bulleth);
@@ -120,6 +121,11 @@ void Enemigo::atacar(){
         disparo.aparecer(startXB,startYB);
         this->disparos.push_back(disparo);
 }
+
+void Enemigo::setSize(float width, float height){
+    mounstruo.setScale(width/mounstruo.getLocalBounds().width, height/mounstruo.getLocalBounds().height);
+}
+
 
 void Enemigo::setSize(float width, float height){
     mounstruo.setScale(width/mounstruo.getLocalBounds().width, height/mounstruo.getLocalBounds().height);
