@@ -21,7 +21,8 @@ private:
     int danio;
     int time;
 public:
-    int posx,posy; 
+    int posx,posy;
+    bool vivo; 
     int tipo;//Segun el lugar donde aparezcan arriba:1, derecha:2, abajo:3, izquierda:4
     vector<Bala>disparos;
     Sprite mounstruo;
