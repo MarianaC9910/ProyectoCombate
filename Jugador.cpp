@@ -4,7 +4,7 @@ Jugador::Jugador()
 {
     this->nombre = "nameless";
     this->vida = 100;
-    this->danio = 10; 
+    this->danio = 20; 
     this->posx=100;
     this->posy=100;
     persona.setPosition(posx, posy);
@@ -15,7 +15,7 @@ Jugador::Jugador(string nom, float startX, float startY)
 
     this->nombre = nom;
     this->vida = 100;
-    this->danio = 10; 
+    this->danio = 20; 
     posx = startX;
     posy = startY;
     persona.setPosition(posx, posy);
@@ -25,7 +25,7 @@ Jugador::Jugador(string nom, int vid,float startX, float startY)
 {
     this->nombre = nom;
     this->vida = vid;
-    this->danio=10;
+    this->danio=20;
     posx = startX;
     posy = startY;
     persona.setPosition(posx, posy);
